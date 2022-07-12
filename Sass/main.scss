@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+
+$Orange: hsl(25, 97%, 53%);
+$White: hsl(0, 0%, 100%);
+$LightGrey: hsl(217, 12%, 63%);
+$MediumGrey: hsl(216, 12%, 54%);
+$DarkBlue: hsl(213, 19%, 18%);
+$VeryDarkBlue: hsl(216, 12%, 8%);
+
+@mixin size($width,$heigth) {
+    width: $width;
+    height: $heigth;
+}
+@mixin display($justifyContent,$alignItems){
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}
+@mixin typography($color,$fontz,$transform,$weigth,$family,$align,$letterspacing,$line) {
+    color: $color;
+    font-size: $fontz;
+    text-transform: $transform;
+    font-weight: $weigth;
+    font-family: $family;
+    text-align: $align;
+    letter-spacing: $letterspacing;
+    line-height: $line;
+}
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body{
+    background: $VeryDarkBlue;
+    padding: 2.5rem;
+    overflow: hidden;
+}
+main{
+    min-height: 100vh;
+    font-family: 'Overpass';
+    @include display(center,center);
+}
+.container{
+    background-color: $DarkBlue;
+    width: 28rem;
+    border-radius: 30px; 
+}
+.first--card{
+    padding: 2.7rem;
+    .star{
+        @include size(3.2rem,3.2rem);
+        background: hsl(215, 13%, 19%);
+        border-radius: 50%;
+        @include size(center,center);
+        img{
+           @include size(35%,35%);
+        }
+    }
+    h1{
+        margin: 2rem 0 1rem 0;
+        color: $White;
+        font-size: 35px;
+    }
+    p{
+        @include typography($MediumGrey,17px ,none,700,'Overpass',none,normal ,1.8rem);
+    }
+    ul{
+        margin: 2rem 0;
+        @include display(space-between, center);
+        list-style: none;
+        li{
+            @include size(3.5rem, 3.5rem);
+            transition: 0.2s ease-in;
+            background: hsl(215, 13%, 19%);
+            border-radius: 50%;
+            border: none;
+            @include typography($MediumGrey,18px ,none,700,'Overpass',none,normal ,normal);
+            @include display(center,center);
+            cursor: pointer;
+            &:hover{
+                background: $Orange;
+                color: $White;
+            }   
+        }
+        .selected{
+            background: $LightGrey;
+            color: $White;
+        }
+         
+    }
+    .send{
+        height: 3rem;
+        background: $Orange;
+        border-radius: 25px;
+        @include typography($White,18px ,uppercase,700,'Overpass',none,normal ,normal);
+        transition: 0.2s ease-in;
+        @include display(center,center);
+        cursor: pointer;
+        &:hover{
+            background: $White;
+            color: $Orange;
+        }
+    }
+}
+.second--card{
+    @include size(28rem,30rem);
+    padding: 3rem;
+    z-index: -1;
+    text-align: center;
+   .valuation{
+    @include size(12rem,2rem);
+    @include display(center,center);
+    color: orange;
+    margin: 2rem auto;
+    background: hsl(213, 8%, 21%);
+    border-radius: 10px;    
+   }
+   h1{
+    color: $White;
+    margin-bottom: 1.5rem;
+   }
+   p{
+    @include typography($MediumGrey,17px ,none,700,'Overpass',none,normal ,1.7rem);
+   }
+}
+.hidden{
+    display: none;
+}
+
+
